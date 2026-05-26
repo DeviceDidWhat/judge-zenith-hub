@@ -26,7 +26,7 @@ export const Route = createFileRoute("/problems/$slug")({
 });
 
 function ProblemDetail() {
-  const p = Route.useLoaderData();
+  const p = Route.useLoaderData() as Problem;
   const [lang, setLang] = useState("cpp");
   const [code, setCode] = useState(p.starterCode[lang] || "// start coding…");
   const [running, setRunning] = useState(false);
