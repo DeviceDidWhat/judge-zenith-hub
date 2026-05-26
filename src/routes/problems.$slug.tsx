@@ -13,11 +13,11 @@ import {
   Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,
 } from "@/components/ui/dialog";
 import { VerdictBadge } from "@/components/verdict-badge";
-import { difficultyClass, languages, problems, type Verdict } from "@/lib/mock-data";
+import { difficultyClass, languages, problems, type Problem, type Verdict } from "@/lib/mock-data";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/problems/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): Problem => {
     const p = problems.find((x) => x.slug === params.slug);
     if (!p) throw notFound();
     return p;
