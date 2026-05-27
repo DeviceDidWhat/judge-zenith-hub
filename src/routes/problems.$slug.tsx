@@ -366,7 +366,7 @@ function ProblemDetail() {
               {verdict && <VerdictBadge verdict={verdict} />}
               <span>Submission Result</span>
             </DialogTitle>
-            <DialogDescription>Submission #SUB-{Math.floor(Math.random() * 9000 + 1000)}</DialogDescription>
+            <DialogDescription>Submission #SUB-{resultId}</DialogDescription>
           </DialogHeader>
           {verdict === "Accepted" ? (
             <motion.div initial={{ scale: 0.96, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="space-y-3">
