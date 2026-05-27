@@ -154,7 +154,7 @@ function ProblemDetail() {
                         <div><div className="text-muted-foreground">Runtime</div><div className="font-mono">{s.runtime} ms</div></div>
                         <div><div className="text-muted-foreground">Memory</div><div className="font-mono">{s.memory} MB</div></div>
                       </div>
-                      <div className="mt-1 text-[10px] text-muted-foreground">{new Date(s.timestamp).toLocaleString()}</div>
+                      <div className="mt-1 text-[10px] text-muted-foreground font-mono">{s.timestamp.replace("T", " ").slice(0, 16)}</div>
                     </motion.div>
                   ))}
                 </AnimatePresence>
