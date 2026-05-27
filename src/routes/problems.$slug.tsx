@@ -56,6 +56,7 @@ function ProblemDetail() {
   const [showResult, setShowResult] = useState(false);
   const [customInput, setCustomInput] = useState(p.examples[0]?.input ?? "");
   const [bottomTab, setBottomTab] = useState("testcase");
+  const [resultId, setResultId] = useState("0000");
   const [localSubs, setLocalSubs] = useState<LocalSub[]>(
     allSubs.slice(0, 6).map((s) => ({
       id: s.id, verdict: s.verdict, language: s.language,
