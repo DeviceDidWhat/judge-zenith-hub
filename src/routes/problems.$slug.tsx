@@ -56,6 +56,7 @@ function ProblemDetail() {
   const [showResult, setShowResult] = useState(false);
   const [customInput, setCustomInput] = useState(p.examples[0]?.input ?? "");
   const [bottomTab, setBottomTab] = useState("testcase");
+  const [resultId, setResultId] = useState("0000");
   const [localSubs, setLocalSubs] = useState<LocalSub[]>(
     allSubs.slice(0, 6).map((s) => ({
       id: s.id, verdict: s.verdict, language: s.language,
@@ -86,6 +87,8 @@ function ProblemDetail() {
     setTimeout(() => {
       const pool: Verdict[] = ["Accepted", "Accepted", "Accepted", "Wrong Answer", "TLE", "MLE", "Runtime Error"];
       const v = pool[Math.floor(Math.random() * pool.length)];
+      const newId = String(Math.floor(Math.random() * 9000 + 1000));
+      setResultId(newId);
       setVerdict(v); setShowResult(true); setSubmitting(false);
       setLocalSubs((s) => [{
         id: `sub_${Math.floor(Math.random() * 9000 + 1000)}`,
@@ -154,7 +157,7 @@ function ProblemDetail() {
                         <div><div className="text-muted-foreground">Runtime</div><div className="font-mono">{s.runtime} ms</div></div>
                         <div><div className="text-muted-foreground">Memory</div><div className="font-mono">{s.memory} MB</div></div>
                       </div>
-                      <div className="mt-1 text-[10px] text-muted-foreground">{new Date(s.timestamp).toLocaleString()}</div>
+                      <div className="mt-1 text-[10px] text-muted-foreground font-mono">{s.timestamp.replace("T", " ").slice(0, 16)}</div>
                     </motion.div>
                   ))}
                 </AnimatePresence>
@@ -363,7 +366,7 @@ function ProblemDetail() {
               {verdict && <VerdictBadge verdict={verdict} />}
               <span>Submission Result</span>
             </DialogTitle>
-            <DialogDescription>Submission #SUB-{Math.floor(Math.random() * 9000 + 1000)}</DialogDescription>
+            <DialogDescription>Submission #SUB-{resultId}</DialogDescription>
           </DialogHeader>
           {verdict === "Accepted" ? (
             <motion.div initial={{ scale: 0.96, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="space-y-3">
