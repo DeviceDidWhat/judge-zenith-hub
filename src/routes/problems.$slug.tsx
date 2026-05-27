@@ -87,6 +87,8 @@ function ProblemDetail() {
     setTimeout(() => {
       const pool: Verdict[] = ["Accepted", "Accepted", "Accepted", "Wrong Answer", "TLE", "MLE", "Runtime Error"];
       const v = pool[Math.floor(Math.random() * pool.length)];
+      const newId = String(Math.floor(Math.random() * 9000 + 1000));
+      setResultId(newId);
       setVerdict(v); setShowResult(true); setSubmitting(false);
       setLocalSubs((s) => [{
         id: `sub_${Math.floor(Math.random() * 9000 + 1000)}`,
